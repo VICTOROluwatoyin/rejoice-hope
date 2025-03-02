@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #dbeafe; /* Soft blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.chat-wrapper {
+    width: 90%; /* Relative width for flexibility */
+    max-width: 650px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(30, 64, 175, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 10px; /* Margin for small screens */
+}
+
+.chat-header {
+    background: #1e40af;
+    color: #fbbf24;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.4em;
+    border-bottom: 4px solid #fbbf24;
+    letter-spacing: 1px;
+}
+
+.chat-header small {
+    font-size: 0.85em;
+    color: #fef3c7;
+    display: block; /* Ensure it stacks on small screens */
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 60vh; /* Relative height based on viewport */
+    background: #f8fafc;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.message.user {
+    background: #1e40af;
+    color: white;
+    margin-left: 20%;
+    text-align: right;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message.bot {
+    background: #fef3c7;
+    color: #1e40af;
+    margin-right: 20%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 2px solid #bfdbfe;
+    background: #ffffff;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+#input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #1e40af;
+    border-radius: 8px 0 0 8px;
+    resize: none;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+    min-width: 0; /* Prevent overflow on small screens */
+}
+
+#input:focus {
+    border-color: #fbbf24;
+}
+
+button {
+    padding: 10px 25px;
+    border: none;
+    background: #fbbf24;
+    color: #1e40af;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background: #f59e0b;
+    transform: scale(1.02);
+}
+
+.chat-footer {
+    background: #1e40af;
+    color: #fef3c7;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets (up to 768px) */
+@media (max-width: 768px) {
+    .chat-wrapper {
+        width: 95%;
+        margin: 5px;
+    }
+
+    .chat-header {
+        font-size: 1.2em;
+        padding: 12px;
+    }
+
+    .chat-messages {
+        max-height: 50vh; /* Slightly smaller on tablets */
+        padding: 10px;
+    }
+
+    .message {
+        padding: 8px 12px;
+        font-size: 0.95em;
+    }
+
+    .message.user {
+        margin-left: 15%;
+    }
+
+    .message.bot {
+        margin-right: 15%;
+    }
+
+    .chat-input {
+        padding: 10px;
+    }
+
+    #input {
+        padding: 8px;
+        font-size: 0.95em;
+    }
+
+    button {
+        padding: 8px 20px;
+    }
+}
+
+/* Phones (up to 480px) */
+@media (max-width: 480px) {
+    .chat-wrapper {
+        width: 100%;
+        margin: 0;
+        border-radius: 0; /* Fullscreen look on phones */
+    }
+
+    .chat-header {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    .chat-messages {
+        max-height: 60vh; /* Maximize chat area on phones */
+        padding: 8px;
+    }
+
+    .message {
+        padding: 8px 10px;
+        font-size: 0.9em;
+        margin: 8px 0;
+    }
+
+    .message.user {
+        margin-left: 10%;
+    }
+
+    .message.bot {
+        margin-right: 10%;
+    }
+
+    .chat-input {
+        padding: 8px;
+        flex-direction: column; /* Stack input and button */
+    }
+
+    #input {
+        border-radius: 8px; /* Full radius when stacked */
+        margin-bottom: 8px;
+        width: 100%; /* Full width */
+        padding: 10px;
+    }
+
+    button {
+        border-radius: 8px; /* Full radius when stacked */
+        padding: 10px;
+        width: 100%; /* Full width */
+    }
+
+    .chat-footer {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+}

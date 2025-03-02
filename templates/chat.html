@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Foundation Teen Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="chat-wrapper">
+        <div class="chat-header"> REJOICE AND HOPE FOUNDATION<br><small>  TEEN CHAT</small></div>
+        <div class="chat-messages" id="messages">
+            <div class="message bot">Hi there! I’m your friend from Hope Foundation. Need help with career ideas or feeling overwhelmed? I’m here for you!</div>
+        </div>
+        <div class="chat-input">
+            <textarea id="input" placeholder="Ask about careers, feelings, or anything!" rows="2"></textarea>
+            <button onclick="sendChat()">Send</button>
+        </div>
+        <div class="chat-footer">Supporting teens with hope and guidance</div>
+    </div>
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
