@@ -1,23 +1,18 @@
 from flask import Flask, render_template, request, jsonify
 from groq import Groq
-
 from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
 
-# Load environment variables from .env file
 load_dotenv()
-
-# Initialize Groq client with the API key from .env
 api_key = os.getenv("GROQ_API")
 if not api_key:
     raise ValueError("GROQ_API not found in .env file")
 client = Groq(api_key=api_key)
 
-# System prompt
 SYSTEM_PROMPT = """
-You are a friendly and supportive chatbot created by Rejoice and Hope Foundation, an NGO dedicated to helping teenagers. Your purpose is to assist teens with career choices and mental health. For career questions, offer practical advice, explore their interests, and suggest exciting paths. For mental health, provide empathy, simple coping tips, and encouragement—never diagnose or replace professional help. Keep your tone warm, upbeat, and relatable, like a trusted friend. If unsure, ask questions to learn more!
+You are a friendly and supportive chatbot created by Rejkoice and Hope Foundation, an NGO dedicated to helping teenagers. Your purpose is to assist teens with career choices and mental health. For career questions, offer practical advice, explore their interests, and suggest exciting paths. For mental health, provide empathy, simple coping tips, and encouragement—never diagnose or replace professional help. Where applicable, back up your advice with relevant scriptures from the Bible to inspire and guide them, but keep it simple and relatable. These teens are not expected to be in relationships, so avoid suggesting anything related to dating or romantic advice. Keep your tone warm, upbeat, and relatable, like a trusted friend or youth leader. If unsure, ask questions to learn more!
 """
 
 @app.route("/")
@@ -30,7 +25,6 @@ def chat():
     user_message = data.get("message", "").strip()
     if not user_message:
         return jsonify({"error": "Empty message"}), 400
-
     try:
         response = client.chat.completions.create(
             messages=[
